@@ -1,21 +1,23 @@
+/*    Notes     
+1. Remaining part - email sending and after that video 146 -  Mocking Libraries
+*/
+
 const express = require("express");
 require("./db/mongoose");
 const userRouter = require("./routers/user");
 const taskRouter = require("./routers/task");
+const config = require("config");
 
 const app = express();
-const port = process.env.PORT;
-
-
+const port = config.get("PORT");
 
 app.use(express.json());
-app.use(userRouter,taskRouter);
+app.use(userRouter, taskRouter);
 //app.use(taskRouter);
 
-app.listen(port,() => {
-
-    console.log("App started on port : " + port);
-})
+app.listen(port, () => {
+  console.log("App started on port : " + port);
+});
 
 /*
 const multer = require("multer");
@@ -46,7 +48,6 @@ app.post("/upload", upload.single('upload'),(req,res) => {
 })
 
 */
-
 
 /*
 const User = require("./models/user");

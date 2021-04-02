@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const config = require("config");
 
-const connectionURL = process.env.dbConnectionUrl;
-mongoose.connect(connectionURL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+const connectionURL = config.get("dbConnectionUrl");
+mongoose.connect(connectionURL, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
 });
+
+console.log("database connected");
 
 /*
 const db = mongoose.model("task-manager-api",{
